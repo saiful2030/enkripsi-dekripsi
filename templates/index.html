@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Aplikasi Enkripsi dan Dekripsi</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/logo.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/core.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='icon-font.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <style>
+        .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo img {
+            width: 50px;
+            height: auto;
+        }
+
+        .brand-text {
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container-fluid {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .table-sm th,
+        .table-sm td {
+            padding: 0.7rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body class="login-page">
+    <div class="login-header box-shadow">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="brand-logo">
+                <h3 class="brand-text">Aplikasi Enkripsi dan Dekripsi</h3>
+            </div>
+        </div>
+    </div>
+    <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 col-lg-5">
+                    <div class="pd-20 card-box mb-30">
+                        <div class="clearfix mb-20">
+                            <div class="pull-left" style="display: flex; align-items: center;">
+                                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"
+                                    style="width: 50px; margin-right: 10px;">
+                                <img src="{{ url_for('static', filename='img/logo-tekkom.png') }}" alt="Logo"
+                                    style="width: 50px; margin-right: 10px;">
+                                <h4 class="text-blue h4" style="margin: 0;">Anggota Kelompok "APA YAHH"</h4>
+                            </div>
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 5%;">#</th>
+                                    <th scope="col" style="width: 45%;">NAMA</th>
+                                    <th scope="col" style="width: 50%;">NIM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Muh Fiki Saefulloh</td>
+                                    <td>22.83.0786</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Muhammad Saiful Aji</td>
+                                    <td>22.83.0789</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Ridho Fathoni Muqorrobin</td>
+                                    <td>22.83.0803</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Rodif Zainul Isro`i</td>
+                                    <td>22.83.0767</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Putri Rahmawati</td>
+                                    <td>22.83.0799</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Faradilla Belva Nurwansya</td>
+                                    <td>22.83.0800</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>Mugni Saleh Maheswara</td>
+                                    <td>22.83.0814</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Firma Danu Kusuma</td>
+                                    <td>22.83.0806</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">9</th>
+                                    <td>Meyzel Jhofany Yuana</td>
+                                    <td>22.83.0823</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="login-box bg-white box-shadow border-radius-10">
+                        <div class="login-title">
+                            <h2 class="text-center text-primary">Aplikasi Enkripsi dan Dekripsi</h2>
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        </div>
+                        <form method="POST" action="/">
+                            <div class="form-group">
+                                <label>Masukkan Teks :</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Masukkan Teks"
+                                    id="text" name="text" required />
+                                <div class="input-group-append custom">
+                                    <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {% if result %}
+                                <label>Hasil :</label>
+                                <textarea class="form-control form-control-lg" readonly
+                                    style="height: 150px;">{{ result }}</textarea>
+                                {% endif %}
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group mb-0">
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                                            name="encrypt">Enkripsi</button>
+                                    </div>
+                                    <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">
+                                        OR
+                                    </div>
+                                    <div class="input-group mb-0">
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit"
+                                            name="decrypt">Dekripsi</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
